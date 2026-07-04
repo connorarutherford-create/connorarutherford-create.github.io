@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connor Rutherford</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ── Colors ── */
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --text-muted: #555555;
+      --accent: #1e293b;
+      --border: #d4d4d4;
+      --hover-bg: #f5f5f5;
+    }
+
+    html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    nav .inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav .logo {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 28px;
+    }
+
+    nav .links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    nav .links a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Main content ── */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 100px 0;
+    }
+
+    section + section {
+      border-top: 1px dashed var(--border);
+    }
+
+    /* ── Hero ── */
+    #hero {
+      padding-top: 140px;
+      padding-bottom: 100px;
+    }
+
+    #hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    #hero .tagline {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 580px;
+    }
+
+    #hero .tagline strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── About ── */
+    #about h2,
+    #projects h2,
+    #contact h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    #about .content {
+      display: flex;
+      gap: 60px;
+    }
+
+    #about .text {
+      flex: 1;
+    }
+
+    #about .text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    #about .text p:last-child {
+      margin-bottom: 0;
+    }
+
+    #about .text .lead {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    #about .sidebar {
+      flex: 0 0 160px;
+    }
+
+    #about .sidebar .stat {
+      margin-bottom: 24px;
+    }
+
+    #about .sidebar .stat .label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    #about .sidebar .stat .value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      transition: border-color 0.15s, background 0.15s;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      background: var(--hover-bg);
+    }
+
+    .project-card .name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .project-card .desc {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .project-card .meta {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── Contact ── */
+    #contact .links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    #contact .links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+      padding-bottom: 2px;
+    }
+
+    #contact .links a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── Footer ── */
+    footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      border-top: 1px dashed var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      #hero h1 { font-size: 2rem; }
+      #hero { padding-top: 110px; padding-bottom: 60px; }
+      section { padding: 60px 0; }
+      #about .content { flex-direction: column; gap: 32px; }
+      #about .sidebar { flex: none; display: flex; gap: 20px; flex-wrap: wrap; }
+      #about .sidebar .stat { margin-bottom: 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+      nav .links { gap: 16px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="inner">
+      <a href="#" class="logo">Connor Rutherford</a>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Hero -->
+    <section id="hero">
+      <h1>Connor Rutherford</h1>
+      <div class="tagline">
+        Builds systems that <strong>run themselves</strong>.
+        <br>
+        AI tools. Infrastructure. Quiet independence.
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="content">
+        <div class="text">
+          <p class="lead">I build tools that make sophisticated things feel simple.</p>
+          <p>
+            Before that — before any of this — I was someone else entirely.
+            A closed chapter I don't revisit.
+          </p>
+          <p>
+            Then I met someone who changed everything. I started over from zero.
+            Not figuratively — emotionally, financially, directionally zero.
+            Just a Mac, too much stubbornness, and the conviction that I could
+            build a life on my own terms.
+          </p>
+          <p>
+            That became my pattern: build systems that solve real problems,
+            make them elegant, then let them run. No investors. No co-founder.
+            No audience. Just quiet, methodical work.
+          </p>
+          <p>
+            Today I live in my own stack — Cloudflare, GitHub Pages, macOS
+            automation — and I ship tools that do one thing well. I don't chase
+            trends. I don't optimize for attention. I build what's useful,
+            keep it clean, and move on.
+          </p>
+          <p>
+            The throughline is simple: independence, earned piece by piece,
+            on my own terms.
+          </p>
+        </div>
+        <div class="sidebar">
+          <div class="stat">
+            <div class="label">Location</div>
+            <div class="value">Nova Scotia, CA</div>
+          </div>
+          <div class="stat">
+            <div class="label">Stack</div>
+            <div class="value">Python · JS · macOS · Cloudflare</div>
+          </div>
+          <div class="stat">
+            <div class="label">Status</div>
+            <div class="value">Shipping</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid" id="project-grid">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="links">
+        <a href="https://github.com/connorarutherford-create">GitHub</a>
+        <a href="#" id="twitter-link">X / Twitter</a>
+        <a href="mailto:connor@esacurriculumpro.com">Email</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Connor Rutherford</span>
+    <span>Built by hand</span>
+  </footer>
+
+  <script>
+    // ── Projects data ──
+    const projects = [
+      {
+        name: 'ESA Curriculum Pro',
+        desc: 'AI-powered PPC builder for students. Generates complete curriculum plans from a single prompt.',
+        url: 'https://esacurriculumpro.com',
+        lang: 'HTML · JS'
+      },
+      {
+        name: 'Store',
+        desc: 'Digital product storefront on GitHub Pages — templates, tools, and automation packs.',
+        url: 'https://connorarutherford-create.github.io/store/',
+        lang: 'HTML'
+      },
+      {
+        name: 'Link Cleaner',
+        desc: 'JavaScript tool that strips tracking parameters and cleans URLs for sharing.',
+        url: 'https://connorarutherford-create.github.io/link-cleaner-site/',
+        lang: 'JavaScript'
+      },
+      {
+        name: 'Clean Data',
+        desc: 'Python utility for sanitizing and normalizing messy datasets before analysis.',
+        url: 'https://github.com/connorarutherford-create/clean-data',
+        lang: 'Python'
+      },
+      {
+        name: 'Inkwell Digital',
+        desc: 'Digital publishing and content project.',
+        url: 'https://github.com/connorarutherford-create/inkwell-digital',
+        lang: 'HTML'
+      },
+      {
+        name: 'Agent Mesh Results',
+        desc: 'Dashboard for autonomous agent task results and system monitoring.',
+        url: '#',
+        lang: 'Infrastructure'
+      }
+    ];
+
+    const grid = document.getElementById('project-grid');
+    grid.innerHTML = projects.map(p => `
+      <a href="${p.url}" class="project-card" target="_blank" rel="noopener">
+        <div class="name">${p.name}</div>
+        <div class="desc">${p.desc}</div>
+        <div class="meta">${p.lang}</div>
+      </a>
+    `).join('');
+  </script>
+
+</body>
+</html>
